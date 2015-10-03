@@ -15,7 +15,7 @@ func NewUserRepo(users []User) UserRepo {
 }
 
 func (r *userRepo) FindUser(id string) (User, bool) {
-    for id, user := range r.users {
+    for _, user := range r.users {
         if user.ID == id {
             return user, true
         }
