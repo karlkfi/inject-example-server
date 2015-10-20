@@ -5,5 +5,11 @@ import (
 )
 
 type Controller interface {
-    RegisterHandlers(*http.ServeMux)
+    Name() string
+    RegisterHandlers(MuxServer)
+}
+
+type MuxServer interface {
+    http.Handler
+    HandleFunc(pattern string, handler func(http.ResponseWriter, *http.Request))
 }

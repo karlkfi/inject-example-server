@@ -12,10 +12,14 @@ func NewIndexController() *IndexController {
     return &IndexController{}
 }
 
-func (c *IndexController) RegisterHandlers(server *http.ServeMux) {
+func (c *IndexController) Name() string {
+    return "IndexController"
+}
+
+func (c *IndexController) RegisterHandlers(server MuxServer) {
     server.HandleFunc("/", c.Handle)
 }
 
 func (c *IndexController) Handle(w http.ResponseWriter, r *http.Request) {
-    fmt.Fprint(w, "Nothing to see here.")
+    fmt.Fprint(w, "Welcome to the Inject Example Server!")
 }

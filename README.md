@@ -1,7 +1,17 @@
 # Inject Example Server
 Example Go (golang) web server with dependency injected controllers using the [Inject](http://github.com/karlkfi/inject) library.
 
-# Usage
+
+## Dependencies
+
+[Facebook's Grace library](http://github.com/facebookgo/grace) is used for graceful shutdown.
+
+```
+go get github.com/facebookgo/grace
+```
+
+
+## Usage
 
 1. Launch the server:
 
@@ -14,23 +24,30 @@ Example Go (golang) web server with dependency injected controllers using the [I
 1. Query Index:
 
     ```
-    curl http://localhost:8080/
+    $ curl http://localhost:8080/; echo
+    Welcome to the Inject Example Server!
     ```
 
 1. Query User List:
 
     ```
-    curl http://localhost:8080/users
+    $ curl http://localhost:8080/users; echo
+    {"users":[{"id":"0","name":"Alice"},{"id":"1","name":"Bob"},{"id":"2","name":"Charlie"}]}
     ```
 
 1. Query User:
 
     ```
-    curl http://localhost:8080/user/{ID}
+    $ curl http://localhost:8080/user/0; echo
+    {"id":"0","name":"Alice"}
+    $ curl http://localhost:8080/user/1; echo
+    {"id":"1","name":"Bob"}
+    $ curl http://localhost:8080/user/2; echo
+    {"id":"2","name":"Charlie"}
     ```
 
 
-# License
+## License
 
    Copyright 2015 Karl Isenberg
 

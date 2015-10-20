@@ -18,7 +18,11 @@ func NewUserController(repo model.UserRepo) *UserController {
     return &UserController{repo: repo}
 }
 
-func (c *UserController) RegisterHandlers(server *http.ServeMux) {
+func (c *UserController) Name() string {
+    return "UserController"
+}
+
+func (c *UserController) RegisterHandlers(server MuxServer) {
     server.HandleFunc("/user/", c.HandleUserRequest)
     server.HandleFunc("/users", c.HandleUsersRequest)
 }

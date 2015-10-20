@@ -1,4 +1,5 @@
 package model
+import "sort"
 
 type UserRepo interface {
     FindUser(id string) (user User, found bool)
@@ -41,6 +42,7 @@ func mapToList(userMap map[string]User) []User {
     for _, user := range userMap {
         userList = append(userList, user)
     }
+    sort.Sort(ByUserID(userList))
     return userList
 }
 
